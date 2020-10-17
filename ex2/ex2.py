@@ -29,11 +29,19 @@ sub_id = {
 
 # use known word "cheers"
 sub_cheers = dict() #sub_id.copy()
+
+# cheers, line 8
 sub_cheers["G"] = "c"
 sub_cheers["U"] = "h"
 sub_cheers["M"] = "e"
 sub_cheers["D"] = "r"
 sub_cheers["S"] = "s"
+
+# successfully line 5 word 5
+sub_cheers["P"] = "u"
+sub_cheers["Y"] = "f"
+sub_cheers["L"] = "l"
+sub_cheers["B"] = "y"
 
 def caesar(emails: List[str]):
 
