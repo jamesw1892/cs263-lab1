@@ -16,32 +16,56 @@ sub_id = {
     'H': 'h',
     'I': 'i',
     'J': 'j',
+    'K': 'k',
     'L': 'l',
+    'M': 'm',
+    'N': 'n',
+    'O': 'o',
     'P': 'p',
     'Q': 'q',
+    'R': 'r',
+    'S': 's',
     'T': 't',
     'U': 'u',
     'V': 'v',
     'W': 'w',
+    'X': 'x',
     'Y': 'y',
     'Z': 'z'
 }
 
-# use known word "cheers"
-sub_cheers = dict() #sub_id.copy()
-
 # cheers, line 8
-sub_cheers["G"] = "c"
-sub_cheers["U"] = "h"
-sub_cheers["M"] = "e"
-sub_cheers["D"] = "r"
-sub_cheers["S"] = "s"
-
 # successfully line 5 word 5
-sub_cheers["P"] = "u"
-sub_cheers["Y"] = "f"
-sub_cheers["L"] = "l"
-sub_cheers["B"] = "y"
+# then filled in rest
+sub_known_words = {
+    'A': 'a',
+    'B': 'y',
+    'C': 'c',
+    'D': 'r',
+    'E': 'e',
+    'F': 'f',
+    'G': 'c',
+    'H': 'h',
+    'I': 'i',
+    'J': 'j',
+    'K': 'k',
+    'L': 'l',
+    'M': 'e',
+    'N': 'n',
+    'O': 'o',
+    'P': 'u',
+    'Q': 'q',
+    'R': 'r',
+    'S': 's',
+    'T': 't',
+    'U': 'h',
+    'V': 'v',
+    'W': 'w',
+    'X': 'x',
+    'Y': 'f',
+    'Z': 'z'
+}
+
 
 def caesar(emails: List[str]):
 
@@ -71,8 +95,8 @@ def test_substitution(emails: List[str]) -> List[str]:
 
             # if char not in substition,
             # it is not a letter so leave as is
-            if char in sub_cheers:
-                char = sub_cheers[char]
+            if char in sub_known_words:
+                char = sub_known_words[char]
             adapted_email += char
 
         adapted_emails.append(adapted_email)
