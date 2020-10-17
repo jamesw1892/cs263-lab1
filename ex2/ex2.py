@@ -38,32 +38,32 @@ sub_id = {
 # successfully line 5 word 5
 # then filled in rest
 sub_known_words = {
-    'A': 'a',
+    'A': 'A',
     'B': 'y',
-    'C': 'c',
+    'C': 'o',
     'D': 'r',
-    'E': 'e',
-    'F': 'f',
+    'E': 'E',
+    'F': 'F',
     'G': 'c',
-    'H': 'h',
-    'I': 'i',
-    'J': 'j',
-    'K': 'k',
-    'L': 'l',
+    'H': 'v',
+    'I': 'i', # not in ciphertext
+    'J': 'j', # not in ciphertext
+    'K': 't',
+    'L': 'l', # itself
     'M': 'e',
-    'N': 'n',
-    'O': 'o',
+    'N': 'n', # itself
+    'O': 'O',
     'P': 'u',
-    'Q': 'q',
+    'Q': 'b',
     'R': 'r',
-    'S': 's',
-    'T': 't',
+    'S': 's', # itself
+    'T': 'a',
     'U': 'h',
-    'V': 'v',
-    'W': 'w',
-    'X': 'x',
+    'V': 'V',
+    'W': 'm',
+    'X': 'x', # not in ciphertext
     'Y': 'f',
-    'Z': 'z'
+    'Z': 'i'
 }
 
 
