@@ -19,3 +19,7 @@ Cracked by using known word attack - guessed line 8 was "cheers" substituted tho
 The substitution from email 0 gave the first word to be the same as in email 1 - "carpsten" but the others are different. This suggests polyalphabetic substition, where the substitution changes every word.
 
 Can also use known word attack on the 1-letter word which must be either "a" or "i".
+
+# Ex3
+
+Cracked 95% by hashing words in wordlists and comparing with hashes
