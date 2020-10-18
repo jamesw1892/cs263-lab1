@@ -14,7 +14,7 @@ def caesar(password: str) -> Union[str, None]:
     # calculate the possible plaintexts of the password,
     # 1 for each of the 25 shifts
     possible_plaintexts = []
-    for shift in range(1, 25+1):
+    for shift in range(0, 25+1):
         possible_plaintext = ""
         for char in password:
             char_code = ord(char.upper())
