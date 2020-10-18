@@ -4,7 +4,7 @@ My code for lab 1, breaking simple encryption using Python 3. Tasks in `Tasks.pd
 
 # Ex1
 
-Every password is a dictionary word. Cracked 96% with Caesar cipher and comparing to wordlist.
+Every password is a dictionary word. Cracked 96% with Caesar cipher and comparing to wordlist. Cracked the remaining 4% by using a Caesar shift of 0 (the remaining words weren't encrypted at all)!
 
 # Ex2
 
