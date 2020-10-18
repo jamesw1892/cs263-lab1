@@ -5,39 +5,7 @@ EMAIL_FILENAMES = [
     "email1.txt"
 ]
 
-sub_id = {
-    'A': 'a',
-    'B': 'b',
-    'C': 'c',
-    'D': 'd',
-    'E': 'e',
-    'F': 'f',
-    'G': 'g',
-    'H': 'h',
-    'I': 'i',
-    'J': 'j',
-    'K': 'k',
-    'L': 'l',
-    'M': 'm',
-    'N': 'n',
-    'O': 'o',
-    'P': 'p',
-    'Q': 'q',
-    'R': 'r',
-    'S': 's',
-    'T': 't',
-    'U': 'u',
-    'V': 'v',
-    'W': 'w',
-    'X': 'x',
-    'Y': 'y',
-    'Z': 'z'
-}
-
-# cheers, line 8
-# successfully line 5 word 5
-# then filled in rest
-sub_known_words = {
+sub_email0 = {
     'A': 'g',
     'B': 'y',
     'C': 'o',
@@ -46,62 +14,68 @@ sub_known_words = {
     'F': 'q',
     'G': 'c',
     'H': 'v',
-    'I': 'I', # not in ciphertext
-    'J': 'J', # not in ciphertext
+    'I': 'x',
+    'J': 'k',
     'K': 't',
-    'L': 'l', # itself
+    'L': 'l',
     'M': 'e',
-    'N': 'n', # itself
+    'N': 'n',
     'O': 'p',
     'P': 'u',
     'Q': 'b',
-    'R': 'r',
-    'S': 's', # itself
+    'R': 'j',
+    'S': 's',
     'T': 'a',
     'U': 'h',
     'V': 'w',
     'W': 'm',
-    'X': 'X', # not in ciphertext
+    'X': 'z',
     'Y': 'f',
     'Z': 'i'
 }
 
+def test_substitution_email0(email: str) -> str:
 
-def caesar(emails: List[str]):
+    adapted_email = ""
+    for char in email:
 
-    contents = emails[0]
+        # if char not in substition,
+        # it is not a letter so leave as is
+        if char in sub_email0:
+            char = sub_email0[char]
+        adapted_email += char
 
-    outs = [contents]
-    for shift in range(1, 25+1):
-        out = ""
-        for char in contents:
-            num = ord(char)
-            if 65 <= num <= 90:
-                num = ((num - 65 + shift) % 26) + 65
-            out += chr(num)
-        outs.append(out)
+    return adapted_email
 
-    for out in outs:
-        print(out)
-        input()
-        print("\n\n\n\n")
+def inc(sub_current: dict, inc_num: int) -> dict:
+    
+    for cipherchar in sub_current:
+        plainchar = sub_current[cipherchar]
+        num = ord(plainchar)
+        if 97 <= num <= 122:
+            num = ((num - 97 + inc_num) % 26) + 97
+        plainchar = chr(num)
+        sub_current[cipherchar] = plainchar
 
-def test_substitution(emails: List[str]) -> List[str]:
+    return sub_current
 
-    adapted_emails = []
-    for email in emails:
-        adapted_email = ""
+def crack_email1(email: str) -> str:
+    """
+    Adapts email to possibly deciphered version
+    """
+
+    adapted_email = ""
+    for inc_num in range(1, 25+1):
+        sub_current = sub_email0.copy()
         for char in email:
-
-            # if char not in substition,
-            # it is not a letter so leave as is
-            if char in sub_known_words:
-                char = sub_known_words[char]
+            if char == " ":
+                sub_current = inc(sub_current, inc_num)
+            elif char in sub_current:
+                char = sub_current[char]
             adapted_email += char
+        adapted_email += "\n"
 
-        adapted_emails.append(adapted_email)
-
-    return adapted_emails
+    return adapted_email
 
 def main():
 
@@ -111,16 +85,15 @@ def main():
         with open(email_filename) as f:
             emails.append(f.read())
 
-    # yields no results apart from first word could be mr
-    # caesar(emails)
+    # email 0
+    adapted_email0 = test_substitution_email0(emails[0])
+    with open("email0_adapted.txt", "w") as f:
+        f.write(adapted_email0)
 
-    # yields only the word cheers making sense
-    adapted_emails = test_substitution(emails)
-
-    for index, adapted_email in enumerate(adapted_emails):
-        filename = "email{}_adapted.txt".format(index)
-        with open(filename, "w") as f:
-            f.write(adapted_email)
+    # email 1 - correct decrement per word is 1
+    adapted_email1 = crack_email1(emails[1])
+    with open("email1_adapted.txt", "w") as f:
+        f.write(adapted_email1)
 
 if __name__ == "__main__":
     main()
