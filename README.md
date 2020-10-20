@@ -1,6 +1,6 @@
-# CS263 Lab 1
+# Lab 1 of CS263: Cyber Security
 
-My code for lab 1, breaking simple encryption using Python 3. Tasks in `Tasks.pdf`.
+My code for lab 1, breaking simple encryption using Python 3. Tasks in `Tasks.pdf`, solutions in `Solutions.pdf`.
 
 # Ex1
 
