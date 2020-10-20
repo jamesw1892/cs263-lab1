@@ -31,18 +31,23 @@ def main():
         for line in f:
             answers.append(line.replace("\n", ""))
 
-    # iterate by wordlist
     for wordlist_filename in os.listdir(WORDLISTS_DIR):
         with open(os.path.join(WORDLISTS_DIR, wordlist_filename)) as f:
             for line in f:
                 line = line.replace("\n", "")
+
+                # hash each word from each wordlist
                 line_hash = hash(line)
 
                 line_num = 0
                 with open(PASSWORD_FILENAME) as g:
                     for password_hash in g:
+
+                        # only try to crack uncracked passwords
                         if answers[line_num] == "":
                             password_hash = password_hash.replace("\n", "")
+
+                            # if the hash matches, we know the word is the password
                             if line_hash == password_hash:
                                 print("{} decrypted is {}".format(line_hash, line))
                                 answers[line_num] = line

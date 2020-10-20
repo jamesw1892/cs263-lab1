@@ -24,4 +24,10 @@ I guessed it could just shift each letter in email 0s substitution every word bu
 
 # Ex3
 
-Cracked 95% by hashing words in wordlists and comparing with hashes
+Using a similar setup to ex1, I created a line in `tabula_staff_passwords_cracked.txt` for every line in `tabula_staff_passwords.txt` that was empty before I cracked it and the password when cracked.
+
+We were told they are hashes so I used the lookup table approach but as I only needed to check a finite number of hashes, I just checked the file for the hash I had just calculated. So I went though each word in each wordlist, hashed it, checked it against every line in the hashes file and if I found a match, I knew the word from the wordlist was the password.
+
+I guessed the hash function used was MD5 and the length confirmed it could be MD5 but couldn't be SHA256 or SHA512 so I tried it and it worked.
+
+This got me 95% of passwords with the same wordlists from ex1, then I realised they could be names so I added a new wordlist of names and that got me to 100%.
